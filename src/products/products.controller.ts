@@ -36,6 +36,12 @@ export class ProductsController {
 
   @Get(':id')
   async findOne( @Param( 'id' ) id: string ) {
+    /*
+     return this.productsClient.send({ cmd: 'find_one' }, { id })
+      .pipe(
+        catchError( err => { throw new RpcException( err ) })
+      )
+     * */
     try {
       const product = await firstValueFrom(
         this.productsClient.send({ cmd: 'find_one' }, { id })
